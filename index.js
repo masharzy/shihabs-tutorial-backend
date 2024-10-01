@@ -39,6 +39,13 @@ const run = async () => {
       });
       res.send(user);
     });
+    // get one user by id
+    app.get("/user-by-id/:id", async (req, res) => {
+      const user = await userCollection.findOne({
+        _id: new ObjectId(req.params.id),
+      });
+      res.send(user);
+    });
     // add user
     app.post("/user", async (req, res) => {
       const user = req.body;
